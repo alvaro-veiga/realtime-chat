@@ -6,13 +6,15 @@ import Join from './components/Join/Join'
 import Chat from './components/Chat/Chat'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [chatVisibility, setChatVisibility] = useState(false)
+  const [socket, setSocket] = useState(null)
 
   return (
     <>
       <div className='App'>
-        <Join/>
-        <Chat/>
+        {
+          chatVisibility ? <Chat socket={socket}/> : <Join setSocket={setSocket} setChatVisibility={setChatVisibility}/>
+        }
       </div>
     </>
   )
